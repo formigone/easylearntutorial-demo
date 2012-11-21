@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
+<script type="mustache/x-tmpl" id="helloTmpl">
+<ul>
+   {{#users}}
+      <li>{{name}}</li>
+   {{/users}}
+</ul>
+</script>
+
+<script>
+
+// ...
+
+var data = {users: [
+      {name: "Rodrigo"},
+      {name: "Admin"},
+      {name: "Super Admin"}
+   ]
+};
+
+var tmpl = "<ul>{{#users}}<li>{{name}}</li>{{/users}}</ul>";
+
+var html = Mustache.to_html(tmpl, data);
+var box = document.getElementById("box");
+
+box.innerHTML = html;
+
+</script>
+
+</body>
+</html>
