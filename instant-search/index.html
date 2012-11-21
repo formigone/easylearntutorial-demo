@@ -16,9 +16,10 @@
 		
 		b.hl {
 			color: #c00;
-			padding: 3px;
+			padding: 3px 5px;
 			background: #fff;
 			border: 1px solid #333;
+			border-radius: 50px;
 		}
 		</style>
    </head>
@@ -48,8 +49,10 @@
 		  var matchType = $("input[type=radio]:checked").attr("value");
 		  var data = {query: query, matchType: matchType};
 		 
-		  if (query.length == 0)
+		  if (query.length == 0 || query == " ") {
+			  $("#results").html("");
 		    return false;
+		  }
 		 
 		  $.ajax({
 		    url: "/demo/instant-search/names-highlight.php",
@@ -69,7 +72,6 @@
 		      $("#results").html(html);
 		    }
 		  });
-		 
 		});
 		 
 		$("input[type=radio]").change(function(){
