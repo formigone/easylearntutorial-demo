@@ -15,11 +15,11 @@
 		}
 		
 		b.hl {
-			color: #c00;
-			padding: 3px 5px;
-			background: #fff;
-			border: 1px solid #333;
-			border-radius: 50px;
+		    color: #c00;
+		    background: #fff;
+		    padding: 3px 5px;
+		    border: 1px solid #333;
+		    border-radius: 25px;
 		}
 		</style>
    </head>
@@ -36,7 +36,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
 		<script type="mustache/x-tmpl" id="name_matches_tmpl">
   {{#matches}}
-  <li>{{name}}</li>
+  <li>{{& name}}</li>
   {{/matches}}
   {{^matches}}
   <li><em>No matches found ='(</em></li>
@@ -63,11 +63,6 @@
 		 
 		      var tmpl = $("#name_matches_tmpl").html();
 		      var html = Mustache.to_html(tmpl, res);
-
-		      // Unescapse HTML characters parsed out by Mustache
-		      html = html.replace(/&lt;/g, "<");
-		      html = html.replace(/&#x2F;/g, "/");
-		      html = html.replace(/&gt;/g, ">");
 
 		      $("#results").html(html);
 		    }

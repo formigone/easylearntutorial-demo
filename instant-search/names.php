@@ -30,6 +30,6 @@ function processRequest($query, $matchType) {
  
 // Take incoming parameters from HTTP request and respond to it
 $query = $_REQUEST["query"];
-$matchType = $_REQUEST["matchType"];
+$matchType = isset($_REQUEST["matchType"]) ? $_REQUEST["matchType"] : MatchType::CONTAINS;
  
 processRequest($query, $matchType);
